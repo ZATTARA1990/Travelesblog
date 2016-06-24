@@ -14,13 +14,11 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/',['uses' => 'UserController@mainPage', 'as' => 'main']);
 Route::get('/{id}',['uses' => 'UserController@index', 'as' => 'user']);
 Route::put('/{id}',['uses' => 'UserController@form', 'as' => 'myform']);
-Route::post('/',['uses' => 'UserController@addEvent', 'as' => 'form']);
+
 
 
 
@@ -29,6 +27,13 @@ Route::post('/',['uses' => 'UserController@addEvent', 'as' => 'form']);
 Route::get('/{id}/create',['uses'=>'EventController@createEvent','as'=>'create_event']);
 Route::post('/{id}/create',['uses'=>'EventController@storeEvent','as'=>'store_event']);
 Route::get('/{event_id}/view',['uses'=>'EventController@viewEvent','as'=>'view_event']);
+Route::get('/{event}/edit',['uses'=>'EventController@editEvent','as'=>'edit_event']);
+Route::put('{user_id}/{event_id}/update',['uses'=>'EventController@updateEvent','as'=>'update_event']);
+Route::get('/{event}/del',['uses'=>'EventController@delEvent','as'=>'del_event']);
+
+
+
+Route::post('/{event}/view',['uses'=>'CommentController@addComment','as'=>'addComment']);
 
 
 

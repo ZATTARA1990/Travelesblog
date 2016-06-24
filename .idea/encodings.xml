@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/app/Http/Controllers/EventController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/auth/register.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/event/create_form.blade.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/resources/views/event/view.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/user/edit.blade.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources/views/user/index.blade.php" charset="UTF-8" />

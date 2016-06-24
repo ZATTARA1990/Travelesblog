@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row otstup">
@@ -89,6 +88,7 @@
                                     </div>
 
                                     <div class="excerpt-header">
+                                        <img  src="{{$event->link}}" class="img-responsive img-thumbnail">
                                         <h1 class="excerpt-title" itemprop="headline">
                                             <a itemprop="url" href="{{ route('view_event', ['event_id' => $event->id]) }}">{{$event->title}}</a>
                                         </h1>
