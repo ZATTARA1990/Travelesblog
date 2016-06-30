@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('users',\App\User::all());
+//        view()->share('users',\App\User::all());
     }
 
     /**

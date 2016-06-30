@@ -26,4 +26,12 @@ class CommentController extends Controller
 
         return redirect()->back();
     }
+    public function delComment(Comment $comment)
+    {
+//        $this->authorize('delComment',$comment);
+
+        $comment->delete();
+        return redirect()->back();
+
+    }
 }

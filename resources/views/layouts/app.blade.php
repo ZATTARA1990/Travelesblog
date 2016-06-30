@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
-
-
-    <title>Блог для путешествинников</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Путешествия отзывы советы">
+    <meta name="description" content="Отзывы о путешествиях и советы как лучше отдохнуть">
+    <title>Блог для путешественников</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
@@ -14,82 +14,84 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="css/sweetalert.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    {{--<link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">--}}
-    <link href="css/style.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
+    <link href="{{asset('but_del/css/style.css')}}" rel="stylesheet" >
+    <link href="{{asset('but_del/jquery_confirm/jquery_confirm.css')}}" rel="stylesheet" >
+
     <script src="/js/sweetalert.min.js"></script>
+
+
 
 </head>
 
 
 <body>
 <div class="contener">
-    <div class="row">
-        <nav class="navbar navbar-default navbar-static-top">
-            {{--<div class="container">--}}
-            <div class="navbar-header">
+    <div class=" col-xs-offset-1 col-xs-10 background">
+        <div class="row">
+            <nav class=" col-xs-12">
+                {{--<div class="container">--}}
+                <div class="navbar-header">
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Travelesblog
-                </a>
-            </div>
-            <div class="dropdown">
-                <a href="#" class="dropdown-toggle navbar-brand " data-toggle="dropdown" role="button"
-                   aria-expanded="false">
-                    Пользователи <span class="caret"></span>
-                </a>
+                    <!-- Branding Image -->
+                    <a class="navbar-brand link_name" href="{{ url('/') }}">
+                        Travelesblog
+                    </a>
+                </div>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle navbar-brand " data-toggle="dropdown" role="button"
+                       aria-expanded="false">
+                        Пользователи <span class="caret"></span>
+                    </a>
 
-                <ul class="dropdown-menu" role="menu">
-                    @if (isset($users))
-                        @foreach($users as $user)
-                            <li><a href="{{route('user',$user->id) }}"><i
-                                            class="fa fa-btn fa-sign-out"></i>{{$user->name}}
-                                </a></li>
-                        @endforeach
-                    @endif
-                </ul>
+                    <ul class="dropdown-menu" role="menu">
+                        @if (isset($users))
+                            @foreach($users as $user)
+                                <li><a href="{{route('user',$user->id) }}"><i
+                                                class="fa fa-btn fa-sign-out"></i>{{$user->name}}
+                                    </a></li>
+                            @endforeach
+                        @endif
+                    </ul>
 
-            </div>
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                </div>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
+                <div class="nav-bar-right">
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Войти</a></li>
-                        <li><a href="{{ url('/register') }}">Зарегистрироваться</a></li>
+                        <a href="{{ url('/login') }}">Войти</a>
+                        <a href="{{ url('/register') }}">Зарегистрироваться</a>
                     @else
-                        <li class="dropdown">
+                        <div class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+                            <div class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Выйти</a></li>
+                            </div>
+                        </div>
 
                     @endif
-                </ul>
-            </div>
-            {{--</div>--}}
-        </nav>
-    </div>
-
-    @yield('content')
-
-    <div id="footer">
-        <div class="container">
-            <p class="text-muted">Dubovik Inc. 2016</p>
+                </div>
+            </nav>
         </div>
+
+        @yield('content')
     </div>
+
+
 </div>
+<footer class="footer col-md-offset-1 col-xs-10">
+    <div class="container">
+        <p class="text-muted">Dubovik Inc. 2016</p>
+    </div>
+</footer>
+
 
 <!-- JavaScripts -->
 @if(session()->has('noty'))
@@ -99,8 +101,11 @@
 @endif
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<script src="{{ asset('js/jquery-3.0.0.min..js') }}"></script>
+<script src="{{ asset('js/validate_form.js') }}"></script>
+
+
 
 
 </body>

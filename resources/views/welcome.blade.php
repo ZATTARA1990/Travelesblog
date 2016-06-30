@@ -1,120 +1,192 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-        <div class="row otstup">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <!-- Маркеры слайдов -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                    </ol>
 
-                    <!-- Содержимое слайдов -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="http://www.fonstola.ru/pic/201308/1280x1024/fonstola.ru-106377.jpg" alt="...">
+    <div class="row otstup">
 
-                            <div class="carousel-caption">
-                                <h3>Смелость</h3>
+        <div class="col-xs-12">
 
-                                <p>Путешествие — это совсем не страшно, это всего лишь много-много маленьких шагов. Ты
-                                    же можешь сделать один шаг, правда?.</p>
-                            </div>
-                        </div>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="main_name"><h1>TrevelesBlog</h1></div>
+                <!-- Маркеры слайдов -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
 
-                        <div class="item">
-                            <img src="http://hq-wallpapers.ru/wallpapers/9/hq-wallpapers_ru_city_43943_1280x1024.jpg"
-                                 alt="...">
+                <!-- Содержимое слайдов -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="cor.jpg" alt="...">
 
-                            <div class="carousel-caption">
-                                <h3>Мечты</h3>
+                        <div class="carousel-caption">
+                            <h3>Смелость</h3>
 
-                                <p>Путешествия многое нам открывают, о многом заставляют думать, мечтать</p>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <img src="http://wpapers.ru/wallpapers/All/9131/1280x1024_%D0%9A%D0%B0%D1%80%D1%82%D0%B0-%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D1%81.jpg"
-                                 alt="...">
-
-                            <div class="carousel-caption">
-                                <h3>Страсть</h3>
-
-                                <p>Любое путешествие — всегда немножко похоже на сказку. Наверное, поэтому его так
-                                    трудно дождаться</p>
-                            </div>
+                            <p>Путешествие — это совсем не страшно, это всего лишь много-много маленьких шагов. Ты
+                                же можешь сделать один шаг, правда?</p>
                         </div>
                     </div>
 
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
+                    <div class="item">
+                        <img src="cor2.jpg"
+                             alt="...">
+
+                        <div class="carousel-caption">
+                            <h3>Мечты</h3>
+
+                            <p>Путешествия многое нам открывают, о многом заставляют думать, мечтать</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="cor3.jpg"
+                             alt="...">
+
+                        <div class="carousel-caption">
+                            <h3>Страсть</h3>
+
+                            <p>Любое путешествие — всегда немножко похоже на сказку. Наверное, поэтому его так
+                                трудно дождаться</p>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class=" col-lg-4 col-xs-12">
+            <div class="thumbnail">
+                <img class="img-responsive" src="new.jpg" alt="New place">
+
+                <div class="caption">
+                    <h3>Узнавай о новых местах</h3>
+
+                    <p>Читай отчёты путешественников и выбирай, куда отправишся ты</p><br>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-lg-4 col-xs-12">
+            <div class="thumbnail">
+                <img class="img-responsive" src="impression.jpg" alt="Give impressoin">
+
+                <div class="caption">
+                    <h3>Делись впечатлениями</h3>
+
+                    <p>Идеальный отдых или неудачный! В любом случае это опыт, которым стоит поделиться с другими</p>
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-lg-4 col-xs-12">
+            <div class="thumbnail">
+                <img class="img-responsive" src="help.jpg" alt="Helping others have a good rest">
+
+                <div class="caption">
+                    <h3>Помоги другим хорошо отдохнуть</h3>
+
+                    <p>Поделись своими советами и подскажи, как сделать отдых лучше</p>
+
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8  col-md-offset-2">
-                <div>
-                    @if (isset ($events))
-                        @foreach($events as $event)
-                            <div class="excerpts-container my_excerpts">
-                                <div class="post publish author-admin post-19 format-standard category-uncategorized post_tag-boat post_tag-lake excerpt"
-                                     itemscope="" itemtype="http://schema.org/BlogPosting">
-                                    <div class="excerpt-meta">
-                            <span class="excerpt-date" itemprop="datePublished"
-                                  content="2008-10-17">{{$event->created_at}}</span>
-                                        @if (isset($users))
-                                            @foreach($users as $user)
-                                                @if ($user->id==$event->user_id)
-                                                    <span itemprop="author" itemscope=""
-                                                          itemtype="http://schema.org/Person" class="excerpt-author">
-                                        <span>Автор:</span>
-                                        <a href="{{route('user',$user->id)}}"
-                                           itemprop="name">{{$user->name}} {{ $user->surname}}</a>
-                                        </span>
-                                                @endif
+    @if (isset ($events))
+        @foreach($events as $event)
+            <div class="otstup">
+                <div class="my_excerpts">
+                    <div class="row">
+
+                        <div class="col-xs-5">
+                            @if(isset($event->link))
+                                <img class="img-responsive img-thumbnail" src="{{$event->link}}">
+                            @endif
+                        </div>
+                        <div class="col-xs-5">
+                            <h1>{{$event->title}}</h1>
+                            @if (isset($users))
+                                @foreach($users as $user)
+                                    @if ($user->id==$event->user_id)
+                                        <div class="event_date">
+                                            <span class="event_auth">
+                            <span>Автор:</span>
+                            <a href="{{route('user',$user->id)}}">
+                                {{$user->name}} {{ $user->surname}}</a>
+                            </span>
+                                            @endif
                                             @endforeach
-                                        @endif
-                                    </div>
+                                            @endif
+                                            <span>{{$event->created_at}}</span>
+                                        </div>
 
-                                    <div class="excerpt-header">
-                                        <img  src="{{$event->link}}" class="img-responsive img-thumbnail">
-                                        <h1 class="excerpt-title" itemprop="headline">
-                                            <a itemprop="url" href="{{ route('view_event', ['event_id' => $event->id]) }}">{{$event->title}}</a>
-                                        </h1>
-                                    </div>
+                            <p>
+                                {{$event->short_description.'...'}}
+                            </p>
 
-                                    <div class="excerpt-content">
-                                        <article itemprop="description">
-                                            <p>{{$event->short_description}}</p>
-
-                                            <p><a class="more-link"
-                                                  href="{{ route('view_event', ['event_id' => $event->id]) }}">Читать
-                                                    полностью</a></p>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                        @endforeach
-                        {{$events->render()}}
-                    @else
-                        <p>На стене пока нет записей</p>
-                    @endif
+                            <p><a class="more-link"
+                                  href="{{ route('view_event', ['event_id' => $event->id]) }}">
+                                    <button type="button" class="btn btn-success">читать далее...</button>
+                                </a></p>
+                        </div>
+                    </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
+                {{--<div class="excerpts-container my_excerpts">--}}
+                {{--<div class="post publish author-admin post-19 format-standard category-uncategorized post_tag-boat post_tag-lake excerpt"--}}
+                {{--itemscope="" itemtype="http://schema.org/BlogPosting">--}}
+                {{--<div class="excerpt-meta">--}}
+                {{--<span class="excerpt-date" itemprop="datePublished"--}}
+                {{--content="2008-10-17">{{$event->created_at}}</span>--}}
+                {{--@if (isset($users))--}}
+                {{--@foreach($users as $user)--}}
+                {{--@if ($user->id==$event->user_id)--}}
+                {{--<span itemprop="author" itemscope=""--}}
+                {{--itemtype="http://schema.org/Person" class="excerpt-author">--}}
+                {{--<span>Автор:</span>--}}
+                {{--<a href="{{route('user',$user->id)}}"--}}
+                {{--itemprop="name">{{$user->name}} {{ $user->surname}}</a>--}}
+                {{--</span>--}}
+                {{--@endif--}}
+                {{--@endforeach--}}
+                {{--@endif--}}
+                {{--</div>--}}
 
+                {{--<div class="excerpt-header">--}}
+                {{--<img src="{{$event->link}}" class="img-responsive img-thumbnail">--}}
+
+                {{--<h1 class="excerpt-title" itemprop="headline">--}}
+                {{--<a itemprop="url"--}}
+                {{--href="{{ route('view_event', ['event_id' => $event->id]) }}">{{$event->title}}</a>--}}
+                {{--</h1>--}}
+                {{--</div>--}}
+
+                {{--<div class="excerpt-content">--}}
+                {{--<article itemprop="description">--}}
+                {{--<p>{{$event->short_description}}</p>--}}
+
+                {{--<p><a class="more-link"--}}
+                {{--href="{{ route('view_event', ['event_id' => $event->id]) }}">Читать--}}
+                {{--полностью</a></p>--}}
+                {{--</article>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+
+
+
+                {{$events->render()}}
+
+            </div>
+        @endforeach
+    @endif
 @endsection

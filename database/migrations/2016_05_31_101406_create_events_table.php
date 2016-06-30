@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('title', 100)->unique();
-            $table->string('short_description');
+            $table->text('short_description');
             $table->text('content');
             $table->string('link', 150);
             $table->timestamps();

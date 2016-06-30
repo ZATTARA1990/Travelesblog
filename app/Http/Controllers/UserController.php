@@ -24,7 +24,7 @@ class UserController extends Controller
         return view('user.index', compact('info','events'));
     }
 
-    public function edit ($id)
+    public function editUser ($id)
     {
         $info=User::latest()->where('id', $id)->get();
         return view('user.edit',compact('info'));
@@ -36,44 +36,12 @@ class UserController extends Controller
         move_uploaded_file($_FILES['somename']['tmp_name'], $uploadfile);
 
         $info=User::find($id);
-        $info->photo=$uploadfile;
+        $info->photo='/'.$uploadfile;
         $info->save();
 
         return redirect()->back();
 
-
-
     }
-
-
-    public function addEvent(Request $request)
-    {
-
-//        $file=$request->file('photo_event')->move('photo_events/',$_FILES['photo_event']['name']);
-
-
-        if (!empty($_FILES['photo_event'])){
-            $uploadfile = "photo_events/".$_FILES['photo_event']['name'];
-            move_uploaded_file($_FILES['photo_event']['tmp_name'], $uploadfile);
-        }
-
-
-        $id=$request->user();
-        $info=Event::find($id['id']);
-        $info->link=$uploadfile;
-        $info->save();
-
-        $request->user()->events()->create([
-            'text' => $request->text,
-
-        ]);
-
-        return redirect()->back();
-
-
-    }
-
-
 
     public function redirect()
     {

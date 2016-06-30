@@ -34,9 +34,12 @@ class EventController extends Controller
             $all = $request->all(); //в переменой $all будет массив, который содержит все введенные данные в форме
             $all['photo_event'] = "/photo_events/" . $f_name;// меняем значение preview на нашу ссылку, иначе в базу попадет что-то вроде /tmp/sdfWEsf.tmp
 
+            preg_match('/[^.]+/',$request->conten,$m);
+//            $str=str_split($request->conten,100);
+
             $request->user()->events()->create([
                 'title' => $request->title,
-                'short_description' => $request->short_description,
+                'short_description'=>$m[0],
                 'content' => $request->conten,
                 'link' => $all['photo_event'],
             ]);
@@ -44,7 +47,6 @@ class EventController extends Controller
         } else {
             $request->user()->events()->create([
                 'title' => $request->title,
-                'short_description' => $request->short_description,
                 'content' => $request->conten,
             ]); // если картинка не передана, то сохраняем запрос, как есть.
         }
@@ -70,17 +72,22 @@ class EventController extends Controller
 
     public function updateEvent($user_id, $event_id, Request $request)
     {
-        $event = Event::find($event_id);
-//        $root = "photo_events";
-        $f_name = $request->file('photo_event')->getClientOriginalName();//определяем имя файла
-        $request->file('photo_event')->move("photo_events", $f_name); //перемещаем файл в папку с оригинальным именем
-        $all = $request->all(); //в переменой $all будет массив, который содержит все введенные данные в форме
-        $all['photo_event'] = "/photo_events/" . $f_name;// меняем значение preview на нашу ссылку, иначе в базу попадет что-то вроде /tmp/sdfWEsf.tmp
+        if ($request->hasFile('photo_event')) //Проверяем была ли передана картинка, ведь статья может быть и без картинки.
+        {
+            $event = Event::find($event_id);
+            $f_name = $request->file('photo_event')->getClientOriginalName();//определяем имя файла
+            $request->file('photo_event')->move("photo_events", $f_name); //перемещаем файл в папку с оригинальным именем
+            $all = $request->all(); //в переменой $all будет массив, который содержит все введенные данные в форме
+            $all['photo_event'] = "/photo_events/" . $f_name;// меняем значение preview на нашу ссылку, иначе в базу попадет что-то вроде /tmp/sdfWEsf.tmp
 
-        $event->update($all);
-        $event->link=$all['photo_event'];
-        $event->save();
+            $event->update($all);
+            $event->link = $all['photo_event'];
+            $event->save();
+        }else{
+            $event = Event::find($event_id);
+            $event->update($request->all());
 
+        }
 
 
         flash('Успеx', 'Новость ' . $event->title . ' обновлена');
