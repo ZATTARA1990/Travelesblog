@@ -69,7 +69,7 @@
 
         <div class=" col-xs-6 col-xs-offset-1">
             @forelse($events as $event)
-                <div class="excerpts-container">
+                <div class="excerpts-container " id="excerpts-container_{{$event->id}}">
                     <div class="post publish author-admin post-19 format-standard category-uncategorized post_tag-boat post_tag-lake excerpt"
                          itemscope="" itemtype="http://schema.org/BlogPosting">
                         <div class="excerpt-meta">
@@ -108,8 +108,8 @@
                             </span>
 
                             <span class="link item">
-                                <label class="delete" data-toggle="modal"
-                                       data-target=".bs-example-modal-sm{{$event->id}}" {{--onclick="myfunc()"--}}>
+                                <label id="del-{{$event->id}}" class="delete" data-toggle="modal"
+                                       data-target="{{--.bs-example-modal-sm{{$event->id}}--}}" {{--onclick="myfunc()"--}}>
                                     <span class="glyphicon glyphicon-trash"></span>
                                     <span class="glyphicon-class">Удалить запись</span>
                                 </label>
@@ -117,36 +117,36 @@
                         @endif
                     @endif
                 </div>
-                <div class="modal fade bs-example-modal-sm{{$event->id}}" tabindex="-1" role="dialog"
-                     aria-labelledby="mySmallModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"
-                                        aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">УДАЛЕНИЕ</h4>
-                            </div>
-                            <div class="modal-body">
-                                Вы точно хатите удалить новость???
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                                <form action="{{route('del_event',$event->id)}}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
+                {{--<div class="modal fade bs-example-modal-sm{{$event->id}}" tabindex="-1" role="dialog"--}}
+                     {{--aria-labelledby="mySmallModalLabel"--}}
+                     {{--aria-hidden="true">--}}
+                    {{--<div class="modal-dialog modal-sm">--}}
+                        {{--<div class="modal-content">--}}
+                            {{--<div class="modal-header">--}}
+                                {{--<button type="button" class="close" data-dismiss="modal"--}}
+                                        {{--aria-hidden="true">&times;</button>--}}
+                                {{--<h4 class="modal-title" id="myModalLabel">УДАЛЕНИЕ</h4>--}}
+                            {{--</div>--}}
+                            {{--<div class="modal-body">--}}
+                                {{--Вы точно хатите удалить новость???--}}
+                            {{--</div>--}}
+                            {{--<div class="modal-footer">--}}
+                                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>--}}
+                                {{--<form action="{{route('del_event',$event->id)}}" method="POST">--}}
+                                    {{--{{ csrf_field() }}--}}
+                                    {{--{{ method_field('DELETE') }}--}}
 
-                                    <button type="submit" id="delete-{{ $event->id }}" class="btn btn-danger">
-                                        <i class="fa fa-btn fa-trash"></i>Delete
-                                    </button>
-                                </form>
+                                    {{--<button type="submit" id="delete-{{ $event->id }}" class="btn btn-danger">--}}
+                                        {{--<i class="fa fa-btn fa-trash"></i>Delete--}}
+                                    {{--</button>--}}
+                                {{--</form>--}}
                                 {{--<a href="{{route('del_event',$event->id)}}">--}}
                                 {{--<button type="button" class="btn btn-danger">Удалить</button>--}}
                                 {{--</a>--}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
             @empty
                 <div class="default_woll">
@@ -163,5 +163,42 @@
 
         <!-- .main -->
     </div>
+<script>
+    $('document').ready(function()
+    {
+        $('.delete').click(function()
+        {
+            var clickedID = this.id.split("-"); //Разбиваем строку (Split работает аналогично PHP explode)
+            var id = clickedID[1]; //и получаем номер из массива
+            /*confirm_var=confirm('Удалить категорию?');*///запрашиваем подтверждение на удаление
+            /*if (!confirm_var) {return false;}*/
+            swal({   title: "Вы уверены?",   text: "Вы хотите удалить новость!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Да, удалить",   closeOnConfirm: false }, function(){
 
+                $.ajax({
+                    url:'/event/'+id+'/del', //url куда мы мы передаем delete запрос
+                    method: 'POST',
+                    data: {'_token':"{{csrf_token()}}" }, //не забываем передавать токен, или будет ошибка.
+                    success: function(msg)
+                    {
+                        $('#excerpts-container_'+id).fadeOut("slow");
+                        swal("Удалено!", "Выбранная новость успешно удолена.", "success");
+//                    alert('Category '+msg+' destroy');
+                    },
+                    error: function(msg)
+                    {
+                        console.log(msg); // в консоле  отображаем информацию об ошибки, если они есть
+                    }
+                });
+
+                });
+
+        });
+    });
+
+
+
+
+
+
+</script>
 @endsection

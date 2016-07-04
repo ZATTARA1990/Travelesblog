@@ -60,6 +60,9 @@ class EventController extends Controller
     {
         $comments = Comment::latest()->where('event_id', $event_id)->get();
         $events = Event::latest()->where('id', $event_id)->get();
+        if ($events->isEmpty()){
+            abort(404);
+        }
 
         return view('event.view', compact('events','comments'));
     }

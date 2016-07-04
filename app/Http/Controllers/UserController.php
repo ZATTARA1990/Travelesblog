@@ -18,8 +18,13 @@ class UserController extends Controller
     }
 
     public function index($id)
+
     {
         $info=User::latest()->where('id', $id)->get();
+
+        if ($info->isEmpty()){
+            abort(404);
+        }
         $events=Event::latest()->where('user_id',$id)->paginate(5);
         return view('user.index', compact('info','events'));
     }

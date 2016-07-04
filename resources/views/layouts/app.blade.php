@@ -14,13 +14,12 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
-    <link href="{{asset('but_del/css/style.css')}}" rel="stylesheet" >
-    <link href="{{asset('but_del/jquery_confirm/jquery_confirm.css')}}" rel="stylesheet" >
-
+    {{--<link href="{{asset('but_del/css/style.css')}}" rel="stylesheet" >--}}
+    {{--<link href="{{asset('but_del/jquery_confirm/jquery_confirm.css')}}" rel="stylesheet" >--}}
+    <script src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
     <script src="/js/sweetalert.min.js"></script>
 
 
@@ -102,7 +101,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
-<script src="{{ asset('js/jquery-3.0.0.min..js') }}"></script>
+
+
+
 <script src="{{ asset('js/validate_form.js') }}"></script>
 
 

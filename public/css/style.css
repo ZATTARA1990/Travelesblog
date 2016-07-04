@@ -54,14 +54,14 @@ nav a:hover
 .main_name
 {
     position: absolute;
-    top: 97px;
-    left: 500px;
+    top: 10%;
+    left: 50%;
     z-index: 2;
     color: white;
 
 }
 .main_name h1{
-    font-size: 70px;
+    font-size:550% ;
     font-family: cursive;
 }
 .thumbnail{

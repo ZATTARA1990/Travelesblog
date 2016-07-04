@@ -30,12 +30,12 @@ Route::group(['prefix' => 'event'], function() {
     Route::get('/{event_id}/view', ['uses' => 'EventController@viewEvent', 'as' => 'view_event']);
     Route::get('/{event}/edit', ['uses' => 'EventController@editEvent', 'as' => 'edit_event']);
     Route::put('{user_id}/{event_id}/update', ['uses' => 'EventController@updateEvent', 'as' => 'update_event']);
-    Route::delete('/{event}/del', ['uses' => 'EventController@delEvent', 'as' => 'del_event']);
+    Route::post('/{event}/del', ['uses' => 'EventController@delEvent', 'as' => 'del_event']);
 
 });
 
 Route::post('/{event}/view',['uses'=>'CommentController@addComment','as'=>'addComment']);
-Route::get('/{comment}/del',['uses'=>'CommentController@delComment','as'=>'del_comment']);
+Route::post('/{comment}/del',['uses'=>'CommentController@delComment','as'=>'del_comment']);
 
 
 

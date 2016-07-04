@@ -4,6 +4,9 @@ function validateTitle(field) {
 function validateContent(field) {
     return (field == "") ? "Не введено содержание.\n" : ""
 }
+function validateComment(field) {
+    return (field == "") ? "Введите комментарий.\n" : ""
+}
 function validatePhoto(field) {
     if (field != "") {
 

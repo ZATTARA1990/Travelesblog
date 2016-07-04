@@ -64,7 +64,7 @@
     </div>
 
     <div class="row">
-        <div class=" col-lg-4 col-xs-12">
+        <div class=" col-sm-4 col-xs-12">
             <div class="thumbnail">
                 <img class="img-responsive" src="new.jpg" alt="New place">
 
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class=" col-lg-4 col-xs-12">
+        <div class=" col-sm-4 col-xs-12">
             <div class="thumbnail">
                 <img class="img-responsive" src="impression.jpg" alt="Give impressoin">
 
@@ -88,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class=" col-lg-4 col-xs-12">
+        <div class=" col-sm-4 col-xs-12">
             <div class="thumbnail">
                 <img class="img-responsive" src="help.jpg" alt="Helping others have a good rest">
 
@@ -106,12 +106,13 @@
             <div class="otstup">
                 <div class="my_excerpts">
                     <div class="row">
-
+                        @if (isset($event->link))
                         <div class="col-xs-5">
-                            @if(isset($event->link))
-                                <img class="img-responsive img-thumbnail" src="{{$event->link}}">
-                            @endif
+
+                            <img class="img-responsive img-thumbnail" src="{{$event->link}}">
+
                         </div>
+
                         <div class="col-xs-5">
                             <h1>{{$event->title}}</h1>
                             @if (isset($users))
@@ -129,60 +130,50 @@
                                             <span>{{$event->created_at}}</span>
                                         </div>
 
-                            <p>
-                                {{$event->short_description.'...'}}
-                            </p>
+                                        <p>
+                                            {{$event->short_description.'...'}}
+                                        </p>
 
-                            <p><a class="more-link"
-                                  href="{{ route('view_event', ['event_id' => $event->id]) }}">
-                                    <button type="button" class="btn btn-success">читать далее...</button>
-                                </a></p>
+                                        <p><a class="more-link"
+                                              href="{{ route('view_event', ['event_id' => $event->id]) }}">
+                                                <button type="button" class="btn btn-success">читать далее...
+                                                </button>
+                                            </a></p>
                         </div>
+
+                        @else
+
+                            <div class="col-xs-10">
+                                <h1>{{$event->title}}</h1>
+                                @if (isset($users))
+                                    @foreach($users as $user)
+                                        @if ($user->id==$event->user_id)
+                                            <div class="event_date">
+                                            <span class="event_auth">
+                            <span>Автор:</span>
+                            <a href="{{route('user',$user->id)}}">
+                                {{$user->name}} {{ $user->surname}}</a>
+                            </span>
+                                                @endif
+                                                @endforeach
+                                                @endif
+                                                <span>{{$event->created_at}}</span>
+                                            </div>
+
+                                            <p>
+                                                {{$event->short_description.'...'}}
+                                            </p>
+
+                                            <p><a class="more-link"
+                                                  href="{{ route('view_event', ['event_id' => $event->id]) }}">
+                                                    <button type="button" class="btn btn-success">читать далее...
+                                                    </button>
+                                                </a></p>
+                            </div>
+
+                        @endif
                     </div>
                 </div>
-
-                {{--<div class="excerpts-container my_excerpts">--}}
-                {{--<div class="post publish author-admin post-19 format-standard category-uncategorized post_tag-boat post_tag-lake excerpt"--}}
-                {{--itemscope="" itemtype="http://schema.org/BlogPosting">--}}
-                {{--<div class="excerpt-meta">--}}
-                {{--<span class="excerpt-date" itemprop="datePublished"--}}
-                {{--content="2008-10-17">{{$event->created_at}}</span>--}}
-                {{--@if (isset($users))--}}
-                {{--@foreach($users as $user)--}}
-                {{--@if ($user->id==$event->user_id)--}}
-                {{--<span itemprop="author" itemscope=""--}}
-                {{--itemtype="http://schema.org/Person" class="excerpt-author">--}}
-                {{--<span>Автор:</span>--}}
-                {{--<a href="{{route('user',$user->id)}}"--}}
-                {{--itemprop="name">{{$user->name}} {{ $user->surname}}</a>--}}
-                {{--</span>--}}
-                {{--@endif--}}
-                {{--@endforeach--}}
-                {{--@endif--}}
-                {{--</div>--}}
-
-                {{--<div class="excerpt-header">--}}
-                {{--<img src="{{$event->link}}" class="img-responsive img-thumbnail">--}}
-
-                {{--<h1 class="excerpt-title" itemprop="headline">--}}
-                {{--<a itemprop="url"--}}
-                {{--href="{{ route('view_event', ['event_id' => $event->id]) }}">{{$event->title}}</a>--}}
-                {{--</h1>--}}
-                {{--</div>--}}
-
-                {{--<div class="excerpt-content">--}}
-                {{--<article itemprop="description">--}}
-                {{--<p>{{$event->short_description}}</p>--}}
-
-                {{--<p><a class="more-link"--}}
-                {{--href="{{ route('view_event', ['event_id' => $event->id]) }}">Читать--}}
-                {{--полностью</a></p>--}}
-                {{--</article>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-
-
 
                 {{$events->render()}}
 
