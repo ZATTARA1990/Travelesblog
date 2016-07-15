@@ -149,7 +149,7 @@
                         data: {'_token': "{{csrf_token()}}"}, //не забываем передавать токен, или будет ошибка.
                         success: function (msg) {
                             $('#del_' + id).fadeOut("slow");
-                            swal("Удалено!", "Выбранный коментарий успешно удолен.", "success");
+                            swal("Удалено!", "Выбранный коментарий успешно удален.", "success");
 //                    alert('Category '+msg+' destroy');
                         },
                         error: function (msg) {
